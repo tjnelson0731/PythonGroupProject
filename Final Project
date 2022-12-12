@@ -1,0 +1,28 @@
+import sqlite3 
+def main():
+  connect = sqlite.connect("Student_Base.db")
+  cursor = connect.cursor()
+  cursor.execute("CREATE TABLE IF NOT EXISTS database(First_Name TEXT, Last_Name TEXT, Class TEXT, Address TEXT, Phone_Number REAL,Email TEXT,Student_id REAL)")
+  Students = [
+  ("Ben", "John","Intro to coding","47483 454th NW", "756-374-3734","Ben.John@gmail.com",4847347485),
+  (*More Student for each braket*),
+  (),
+  (),
+  (),
+  (),
+  (),
+  (),
+  (),
+  ()
+  ]
+  Question = int(input("Would you like to edit the records"))
+  print(Question)
+  if question == "y":
+      cursor.execute(*Something to edit the code*)  
+  if question == "n":
+     continue
+    
+    
+    
+    if __name__ == "__main__":
+      main()
