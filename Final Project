@@ -4,16 +4,16 @@ def main():
   cursor = connect.cursor()
   cursor.execute("CREATE TABLE IF NOT EXISTS database(First_Name TEXT, Last_Name TEXT, Class TEXT, Address TEXT, Phone_Number REAL,Email TEXT,Student_id REAL)")
   Students = [
-  ("Ben", "John","Intro to coding","47483 454th NW", "756-374-3734","Ben.John@gmail.com",4847347485),
-  (*More Student for each braket*),
-  (),
-  (),
-  (),
-  (),
-  (),
-  (),
-  (),
-  ()
+  ("Ben", "John","Intro to coding","47483 454th NW", "756-374-3734","Ben.John@gmail.com", 4847347485),
+  ("Mike", "Willing", "World History", "P.O. Box 301", "218-216-7548", "mikewilling@yahoo.com", 2216525622),
+  ("Andrea", "Williams", "Lifespan Psychology", "206 Bell Ave", "218-428-7654", "andreawilliams@gmail.com", 3256751648),
+  ("Henry", "Johnson", "Mathmatics", "5702 Potato Street", "218-966-3232", "henryjohnson@outlook.com", 5124635248),
+  ("Ronald", "Weasley", "Statistics", "4744 Carrot Street", "218-523-8723", "ronweasley@gmail.com", 6262462484),
+  ("Jerry", "Foreman", "Farming", "8457 Green Bean Ave", "218-631-6245", "jerryforeman@yahoo.com", 2545464574),
+  ("Conway", "Smith", "Intro to Spreadsheets", "206 Corn Cove", "218-986-7854", "conwaysmith@gmail.com", 2514632196),
+  ("Daniel", "Brown", "Composition", "3524 Zucchini Street", "218-974-6657", "danielbrown@outlook.com", 5526432289),
+  ("Jalen", "Miller", "Intro to Speech", "202 Cucumber Ave", "218-965-9842", "jalenmiller@gmail.com", 2623532649),
+  ("Gracie", "Truman", "Statistics", "288 Broccoli Street", "218-958-2115", "gracietruman@gmail.com", 2255636394)
   ]
   Question = int(input("Would you like to edit the records"))
   print(Question)
