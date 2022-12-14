@@ -1,10 +1,10 @@
-# title: Access Student Database
-# Authors: Taylor Nelson, Kadin Meyers, Benjamin Eerkes
-
 import sqlite3
 
 
-def update_student(cursor):
+def update_student():
+    conn = sqlite3.connect("Students_Base.db")
+    cursor = conn.cursor()
+    cursor.execute("CREATE TABLE IF NOT EXISTS database(Student_id, First_Name, Last_Name, Class, Address, Phone_Number, Email)")
     id = input('What is the ID of the student record you want to update? ')
     value = input('What value of the record do you want to update? ')
     update = input('What do you want to update it too? ')
@@ -15,7 +15,11 @@ def update_student(cursor):
         print(f'{row[0]:<15}{row[1]:<13}{row[2]:<12}{row[3]:<15}{row[4]:<22}{row[5]:<16}{row[6]}')
 
 
-def delete_student(cursor):
+def delete_student():
+    conn = sqlite3.connect("Students_Base.db")
+    cursor = conn.cursor()
+    cursor.execute(
+        "CREATE TABLE IF NOT EXISTS database(Student_id, First_Name, Last_Name, Class, Address, Phone_Number, Email)")
     id_delete = input('What is the ID of the student record you want to delete?')
     cursor.execute('DELETE FROM database WHERE Student_id = ?', id_delete)
     cursor.execute('SELECT * FROM database')
@@ -24,7 +28,10 @@ def delete_student(cursor):
         print(f'{row[0]:<15}{row[1]:<13}{row[2]:<12}{row[3]:<15}{row[4]:<22}{row[5]:<16}{row[6]}')
 
 
-def add_student(cursor):
+def add_student():
+    conn = sqlite3.connect("Students_Base.db")
+    cursor = conn.cursor()
+    cursor.execute("CREATE TABLE IF NOT EXISTS database(Student_id, First_Name, Last_Name, Class, Address, Phone_Number, Email)")
     id = input('What is their ID? ')
     fn = input('What is their first name? ')
     ln = input('What is their last name? ')
@@ -49,15 +56,16 @@ def main():
     if question.lower() == "y":
         q2 = input("Would you like to update, delete, or add a record? ")
         if q2.lower() == 'update':
-            update_student(cursor)
+            update_student()
 
         if q2.lower() == 'delete':
-            delete_student(cursor)
+            delete_student()
 
         if q2.lower() == 'add':
-            add_student(cursor)
+            add_student()
 
     if question.lower() == "n":
+        cursor.execute("CREATE TABLE IF NOT EXISTS database(Student_id, First_Name, Last_Name, Class, Address, Phone_Number, Email)")
         cursor.execute('SELECT * FROM database')
         results = cursor.fetchall()
         for row in results:
