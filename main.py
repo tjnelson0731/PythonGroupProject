@@ -9,7 +9,7 @@ def main():
     # Starts connection to database
     conn = sqlite3.connect("Student_Base.db")
     cur = conn.cursor()
-    cur.execute(""" CREATE TABLE IF NOT EXISTS database(Student_id INTEGER PRIMARY KEY NOT NULL, First_Name TEXT,
+    cur.execute(""" CREATE TABLE database (Student_id INTEGER PRIMARY KEY NOT NULL, First_Name TEXT,
                        Last_Name TEXT, Class TEXT, Address TEXT, Phone_Number REAL, Email TEXT) """)
     students = [
         (1, "Ben", "John", "Intro to coding", "47483 454th NW", "756-374-3734", "Ben.John@gmail.com"),

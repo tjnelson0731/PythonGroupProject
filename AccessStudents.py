@@ -25,15 +25,15 @@ def delete_student(cursor):
 
 
 def add_student(cursor):
-    ID = input('What is their ID? ')
-    FN = input('What is their first name? ')
-    LN = input('What is their last name? ')
-    CL = input('What is their class? ')
-    AD = input('What is their address? ')
-    PN = input('What is their phone number? ')
-    EM = input('What is their email? ')
+    id = input('What is their ID? ')
+    fn = input('What is their first name? ')
+    ln = input('What is their last name? ')
+    cl = input('What is their class? ')
+    ad = input('What is their address? ')
+    pn = input('What is their phone number? ')
+    em = input('What is their email? ')
     cursor.execute("""INSERT INTO database (Student_id, First_Name, Last_Name, Class, Address, Phone_Number, Email) 
-                    VALUES (?,?,?,?,?,?,?)""", (ID, FN, LN, CL, AD, PN, EM))
+                    VALUES (?,?,?,?,?,?,?)""", (id, fn, ln, cl, ad, pn, em))
     cursor.execute('SELECT * FROM database')
     results = cursor.fetchall()
     for row in results:
