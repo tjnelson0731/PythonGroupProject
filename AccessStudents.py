@@ -11,8 +11,10 @@ def update_student(cursor):
     cursor.execute('UPDATE database SET ' + value + ' = ? WHERE Student_id = ?', (update, id))
     cursor.execute('SELECT * FROM database')
     results = cursor.fetchall()
+    print('Student I.D.   First_Name   Last_Name   Class_Name              Address              Phone_Number       '
+          '  Email')
     for row in results:
-        print(f'{row[0]:<15}{row[1]:<13}{row[2]:<12}{row[3]:<15}{row[4]:<22}{row[5]:<16}{row[6]}')
+        print(f'{row[0]:<15}{row[1]:<13}{row[2]:<12}{row[3]:22}{row[4]:23}{row[5]:16}{row[6]:25}')
 
 
 def delete_student(cursor):
@@ -20,8 +22,10 @@ def delete_student(cursor):
     cursor.execute('DELETE FROM database WHERE Student_id = ?', id_delete)
     cursor.execute('SELECT * FROM database')
     results = cursor.fetchall()
+    print('Student I.D.   First_Name   Last_Name   Class_Name              Address              Phone_Number       '
+          '  Email')
     for row in results:
-        print(f'{row[0]:<15}{row[1]:<13}{row[2]:<12}{row[3]:<15}{row[4]:<22}{row[5]:<16}{row[6]}')
+        print(f'{row[0]:<15}{row[1]:<13}{row[2]:<12}{row[3]:22}{row[4]:23}{row[5]:16}{row[6]:25}')
 
 
 def add_student(cursor):
@@ -36,32 +40,42 @@ def add_student(cursor):
                     VALUES (?,?,?,?,?,?,?)""", (id, fn, ln, cl, ad, pn, em))
     cursor.execute('SELECT * FROM database')
     results = cursor.fetchall()
+    print('Student I.D.   First_Name   Last_Name   Class_Name              Address              Phone_Number       '
+          '  Email')
     for row in results:
-        print(f'{row[0]:<15}{row[1]:<13}{row[2]:<12}{row[3]:<15}{row[4]:<22}{row[5]:<16}{row[6]}')
+        print(f'{row[0]:<15}{row[1]:<13}{row[2]:<12}{row[3]:22}{row[4]:23}{row[5]:16}{row[6]:25}')
 
 
 def main():
     connect = sqlite3.connect("Student_Base.db")
     cursor = connect.cursor()
+    answer = True
+    while answer:
+        question = input("Would you like to edit the records? (Y/N) ")
 
-    question = input("Would you like to edit the records? (Y/N) ")
+        if question.lower() == "y":
+            q2 = input("Would you like to update, delete, or add a record? ")
+            if q2.lower() == 'update':
+                update_student(cursor)
 
-    if question.lower() == "y":
-        q2 = input("Would you like to update, delete, or add a record? ")
-        if q2.lower() == 'update':
-            update_student(cursor)
+            if q2.lower() == 'delete':
+                delete_student(cursor)
 
-        if q2.lower() == 'delete':
-            delete_student(cursor)
+            if q2.lower() == 'add':
+                add_student(cursor)
 
-        if q2.lower() == 'add':
-            add_student(cursor)
-
-    if question.lower() == "n":
-        cursor.execute('SELECT * FROM database')
-        results = cursor.fetchall()
-        for row in results:
-            print(f'{row[0]:<15}{row[1]:<13}{row[2]:<12}{row[3]:<15}{row[4]:<22}{row[5]:<16}{row[6]}')
+        if question.lower() == "n":
+            cursor.execute('SELECT * FROM database')
+            results = cursor.fetchall()
+            print('Student I.D.   First_Name   Last_Name   Class_Name              Address              Phone_Number       '
+                  '  Email')
+            for row in results:
+                print(f'{row[0]:<15}{row[1]:<13}{row[2]:<12}{row[3]:22}{row[4]:23}{row[5]:16}{row[6]:25}')
+        q3 = input('Do you want to continue to edit the database? ')
+        if q3.lower() == 'y':
+            answer = True
+        else:
+            answer = False
 
 
 if __name__ == "__main__":
