@@ -25,7 +25,7 @@ def main():
     ]
 
     cur.executemany(""" INSERT INTO database (Student_id, First_Name, Last_Name, Class, Address, Phone_Number, Email) VALUES
-                        (?, ?,?,?,?,?,?) """, students)
+                        (?,?,?,?,?,?,?) """, students)
 
     # Selects the data from the table and outputs it
     # cur.execute('SELECT student_id, First_Name, Last_Name, Phone_Number, Address, Major, Email FROM students')
