@@ -1,6 +1,6 @@
 # title: Access Student Database
 # Authors: Taylor Nelson, Kadin Meyers, Benjamin Eerkes
-# import sqlite3
+
 import sqlite3
 
 
